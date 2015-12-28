@@ -7,14 +7,15 @@ server {
 
 # SSL settings from https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility
 # See also https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+# Certificates obtained via Let's Encrypt (http://letsencrypt.readthedocs.org/en/latest/using.html)
 server {
 	listen 443 ssl;
     ssl on;
 
 	server_name www.markhepburn.com markhepburn.com;
 
-    ssl_certificate      /etc/nginx/ssl/markhepburn.crt;
-    ssl_certificate_key  /etc/nginx/ssl/markhepburn.key;
+    ssl_certificate      /etc/letsencrypt/live/markhepburn.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/markhepburn.com/privkey.pem;
 
     ssl_protocols TLSv1.1 TLSv1.2;
     ssl_ciphers 'AES256+EECDH:AES256+EDH:!aNULL';
